@@ -3,7 +3,7 @@ import 'package:scannerqrcode_premium/src/modules/readqrcode/view/result_read_co
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:share/share.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 
 class ResultReadCode extends StatefulWidget {
@@ -34,7 +34,7 @@ class _ResultReadCodeState extends State<ResultReadCode> {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('scanResultPopupCopy'.tr() + '.'),
+        title: Text(AppLocalizations.of(context)!.scanResultPopupCopy + '.'),
       ),
     );
   }
@@ -53,7 +53,7 @@ class _ResultReadCodeState extends State<ResultReadCode> {
           Padding(
             padding: EdgeInsets.only(top: 50.0.h, left: 30.w, bottom: 10.w),
             child: Text(
-              'scanResultQrTitle'.tr(),
+              AppLocalizations.of(context)!.scanResultQrTitle,
               style: TextStyle(fontSize: 20.sp),
             ),
           ),
@@ -77,7 +77,7 @@ class _ResultReadCodeState extends State<ResultReadCode> {
                     ),
                   ),
                   IconButton(
-                    tooltip: 'scanResultQrToolTip'.tr(),
+                    tooltip: AppLocalizations.of(context)!.scanResultQrToolTip,
                     onPressed: () => FlutterClipboard.copy(widget.result).then(
                       (_) => _popupCopyBoard(),
                     ),
@@ -100,7 +100,7 @@ class _ResultReadCodeState extends State<ResultReadCode> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'scanResultQrButtonShare'.tr(),
+                          AppLocalizations.of(context)!.scanResultQrButtonShare,
                           style: TextStyle(fontSize: 14.sp),
                         ),
                         const Icon(Icons.share)

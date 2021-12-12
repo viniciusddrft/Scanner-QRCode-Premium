@@ -10,11 +10,10 @@ import 'package:scannerqrcode_premium/src/modules/settings/view/components/butto
 import 'package:scannerqrcode_premium/src/modules/settings/view/components/button_create_qrcode_set_logo.dart';
 import 'package:scannerqrcode_premium/src/modules/settings/view/components/buttons_create_qrcode_set_colors.dart';
 import 'package:scannerqrcode_premium/src/modules/settings/view/components/qrcode_settings_exemplo.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatelessWidget {
-  final Locale locale;
-  const SettingsPage({required this.locale, Key? key}) : super(key: key);
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,23 +33,27 @@ class SettingsPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 35.h, top: 15.h),
                       child: Text(
-                        'settingsTitleCardCreateQrCode'.tr(),
+                        AppLocalizations.of(context)!
+                            .settingsTitleCardCreateQrCode,
                         style: TextStyle(fontSize: 22.sp),
                       ),
                     ),
                     ButtonCreateQRCodeSetColor(
                       colorChange: SettingsCreateQRCode.colorQRBackground,
-                      textButton: 'settingsButtonColorbackground'.tr(),
+                      textButton: AppLocalizations.of(context)!
+                          .settingsButtonColorbackground,
                       savePreferenceKey: 'colorQRBackground',
                     ),
                     ButtonCreateQRCodeSetColor(
                       colorChange: SettingsCreateQRCode.colorQRCode,
-                      textButton: 'settingsButtonColorCode'.tr(),
+                      textButton:
+                          AppLocalizations.of(context)!.settingsButtonColorCode,
                       savePreferenceKey: 'colorQRCode',
                     ),
                     ButtonCreateQRCodeSetColor(
                       colorChange: SettingsCreateQRCode.colorQRCodeEye,
-                      textButton: 'settingsButtonColorEye'.tr(),
+                      textButton:
+                          AppLocalizations.of(context)!.settingsButtonColorEye,
                       savePreferenceKey: 'colorQRCodeEye',
                     ),
                     ButtonCreateQRCodeSetShape.body(
@@ -65,7 +68,7 @@ class SettingsPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 10.h),
                       child: Text(
-                        'settingsQRCodeExample'.tr(),
+                        AppLocalizations.of(context)!.settingsQRCodeExample,
                         style: TextStyle(fontSize: 18.sp),
                       ),
                     ),
@@ -91,11 +94,11 @@ class SettingsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 15.h, bottom: 40.h),
                         child: Text(
-                          'settingsLanguageTitle'.tr(),
+                          AppLocalizations.of(context)!.settingsLanguageTitle,
                           style: TextStyle(fontSize: 22.sp),
                         ),
                       ),
-                      ButtonSetLanguage(locale: locale)
+                      const ButtonSetLanguage()
                     ],
                   ),
                 ),
@@ -115,7 +118,7 @@ class SettingsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 15.h, bottom: 40.h),
                         child: Text(
-                          'settingsHelp'.tr(),
+                          AppLocalizations.of(context)!.settingsHelp,
                           style: TextStyle(fontSize: 22.sp),
                         ),
                       ),
@@ -139,7 +142,7 @@ class SettingsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 15.h, bottom: 40.h),
                         child: Text(
-                          'settingsAboutTheApp'.tr(),
+                          AppLocalizations.of(context)!.settingsAboutTheApp,
                           style: TextStyle(fontSize: 22.sp),
                         ),
                       ),
@@ -163,7 +166,7 @@ class SettingsPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 15.h, bottom: 40.h),
                         child: Text(
-                          'settingsContact'.tr(),
+                          AppLocalizations.of(context)!.settingsContact,
                           style: TextStyle(fontSize: 22.sp),
                         ),
                       ),
@@ -176,7 +179,7 @@ class SettingsPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 15.h, top: 30.h),
               child: Text(
-                'settingsVersion'.tr() + ' 2.0.2',
+                AppLocalizations.of(context)!.settingsVersion + ' 2.0.3',
                 style: GoogleFonts.yatraOne(color: Colors.grey),
               ),
             ),

@@ -6,7 +6,7 @@ import 'package:scannerqrcode_premium/src/modules/readqrcode/view/read_qr_code_m
 import 'package:scannerqrcode_premium/src/modules/settings/controller/settings_create_qrcode.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scannerqrcode_premium/src/modules/settings/view/settings_view.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                tooltip: 'homeToolTipView1'.tr(),
+                tooltip: AppLocalizations.of(context)!.homeToolTipView1,
                 onPressed: () => _pageController.animateToPage(0,
                     duration: const Duration(
                       milliseconds: 500,
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 20.w,
               ),
               IconButton(
-                tooltip: 'homeToolTipView2'.tr(),
+                tooltip: AppLocalizations.of(context)!.homeToolTipView2,
                 onPressed: () => _pageController.animateToPage(1,
                     duration: const Duration(
                       milliseconds: 500,
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 20.w,
               ),
               IconButton(
-                tooltip: 'homeToolTipView3'.tr(),
+                tooltip: AppLocalizations.of(context)!.homeToolTipView3,
                 onPressed: () => _pageController.animateToPage(2,
                     duration: const Duration(
                       milliseconds: 500,
@@ -102,10 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageController,
         onPageChanged: (valueControllerPage) =>
             HomeController.appBarControlleIconsColors(valueControllerPage),
-        children: [
-          const ReadQRCodePage(),
-          const CreateQRCodeMenu(),
-          SettingsPage(locale: context.locale)
+        children: const [
+          ReadQRCodePage(),
+          CreateQRCodeMenu(),
+          SettingsPage(),
         ],
       ),
     );
