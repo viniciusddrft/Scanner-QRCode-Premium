@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code_menu/create_qrcode_menu_view.dart';
 import 'package:scannerqrcode_premium/src/modules/home/controller/home_controller.dart';
 import 'package:scannerqrcode_premium/src/modules/readqrcode/view/read_qr_code_menu/read_qr_code_view.dart';
-import 'package:scannerqrcode_premium/src/modules/settings/controller/settings_create_qrcode.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scannerqrcode_premium/src/modules/settings/view/settings_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,18 +16,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final PageController _pageController = PageController(initialPage: 0);
 
   @override
-  void initState() {
-    SystemChrome.setPreferredOrientations(const [
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    SettingsCreateQRCode.getPreferencesColors();
-    SettingsCreateQRCode.getPreferenceShape();
-    SettingsCreateQRCode.getPreferencesLogo();
-    super.initState();
-  }
-
-  @override
   void dispose() {
     _pageController.dispose();
     HomeController.dispose();
@@ -40,7 +26,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff202020),
         flexibleSpace: Container(
           padding: EdgeInsets.only(top: 35.h),
           child: Row(
