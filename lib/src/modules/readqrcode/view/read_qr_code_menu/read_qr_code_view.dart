@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scannerqrcode_premium/src/modules/readqrcode/controller/read_qr_code_controller.dart';
+import 'package:scannerqrcode_premium/src/modules/readqrcode/controller/read_qr_code_menu_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:scannerqrcode_premium/src/shared/themes/text_themes.dart';
@@ -40,6 +40,11 @@ class _ReadQRCodePageState extends State<ReadQRCodePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
               onPressed: () async => ReadQrCodeController.scanCamera(context),
               child: SizedBox(
                 height: 40.h,
@@ -61,7 +66,12 @@ class _ReadQRCodePageState extends State<ReadQRCodePage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () async =>
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              onPressed: () =>
                   ReadQrCodeController.scanFile(context, popupError),
               child: SizedBox(
                 height: 40.h,

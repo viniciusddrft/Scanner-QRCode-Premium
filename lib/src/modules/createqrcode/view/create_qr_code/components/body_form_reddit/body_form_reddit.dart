@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/base_for_form/base_for_form.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/base_for_form/base_for_form.dart';
 
 class BodyFormReddit extends BaseForm {
-  BodyFormReddit({Key? key}) : super(key: key);
+  const BodyFormReddit({Key? key}) : super(key: key);
 
   @override
   _BodyFormRedditState createState() => _BodyFormRedditState();
@@ -49,7 +49,7 @@ class _BodyFormRedditState extends State<BodyFormReddit> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 30.h, left: 30.w, right: 30.w),
+            padding: EdgeInsets.only(bottom: 50.h, left: 30.w, right: 30.w),
             child: TextFormField(
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
@@ -64,7 +64,11 @@ class _BodyFormRedditState extends State<BodyFormReddit> {
                 labelText: AppLocalizations.of(context)!
                         .createQRCodeRedditLabelDecorate +
                     ' ...',
-                border: const OutlineInputBorder(),
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
               ),
             ),
           ),

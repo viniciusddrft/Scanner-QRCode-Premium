@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/base_for_form/base_for_form.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/base_for_form/base_for_form.dart';
 
 class BodyFormWhatsapp extends BaseForm {
-  BodyFormWhatsapp({Key? key}) : super(key: key);
+  const BodyFormWhatsapp({Key? key}) : super(key: key);
 
   @override
   _BodyFormWhatsappState createState() => _BodyFormWhatsappState();
@@ -30,7 +30,7 @@ class _BodyFormWhatsappState extends State<BodyFormWhatsapp> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 30.h, left: 30.w, right: 30.w),
+            padding: EdgeInsets.only(bottom: 50.h, left: 30.w, right: 30.w),
             child: TextFormField(
               keyboardType: TextInputType.phone,
               validator: (value) {
@@ -46,7 +46,11 @@ class _BodyFormWhatsappState extends State<BodyFormWhatsapp> {
                 labelText: AppLocalizations.of(context)!
                         .createQRCodeWhatsappLabelDecorate +
                     ' ...',
-                border: const OutlineInputBorder(),
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
               ),
             ),
           ),

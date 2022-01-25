@@ -3,7 +3,7 @@ import 'package:scannerqrcode_premium/src/modules/readqrcode/view/result_read_co
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:scannerqrcode_premium/src/shared/themes/text_themes.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 
@@ -61,6 +61,9 @@ class _ResultReadCodeState extends State<ResultReadCode> {
             width: 500.w,
             height: 70.h,
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               color: Colors.transparent.withOpacity(0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,6 +95,11 @@ class _ResultReadCodeState extends State<ResultReadCode> {
               Container(
                 padding: EdgeInsets.only(top: 10.h, bottom: 100.h),
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
                   onPressed: () => Share.share(widget.result),
                   child: SizedBox(
                     width: 130.w,

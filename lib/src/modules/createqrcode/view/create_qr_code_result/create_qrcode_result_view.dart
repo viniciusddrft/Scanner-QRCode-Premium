@@ -84,11 +84,16 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: () async =>
-                        await CreateQrCodeController.isTheImageQRSaved(
-                                _screenshotController)
-                            ? _popupQRCodeSave()
-                            : _popupError(),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                    ),
+                    onPressed: () => CreateQrCodeController.isTheImageQRSaved(
+                            _screenshotController)
+                        .then(
+                      (value) => value ? _popupQRCodeSave() : _popupError(),
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -111,6 +116,11 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
                     ),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                    ),
                     onPressed: () => CreateQrCodeController.shareImageQr(
                         _screenshotController),
                     child: Row(

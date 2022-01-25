@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/base_for_form/base_for_form.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/base_for_form/base_for_form.dart';
 
 class BodyFormTiktok extends BaseForm {
-  BodyFormTiktok({Key? key}) : super(key: key);
+  const BodyFormTiktok({Key? key}) : super(key: key);
 
   @override
   _BodyFormTiktokState createState() => _BodyFormTiktokState();
@@ -39,7 +39,7 @@ class _BodyFormTiktokState extends State<BodyFormTiktok> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 30.h, left: 30.w, right: 30.w),
+            padding: EdgeInsets.only(bottom: 50.h, left: 30.w, right: 30.w),
             child: TextFormField(
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
@@ -53,7 +53,11 @@ class _BodyFormTiktokState extends State<BodyFormTiktok> {
               decoration: InputDecoration(
                 labelText: AppLocalizations.of(context)!
                     .createQRCodeTiktokLabelDecorate,
-                border: const OutlineInputBorder(),
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
               ),
             ),
           ),
