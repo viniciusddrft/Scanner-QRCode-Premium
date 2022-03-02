@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code_menu/create_qrcode_menu_view.dart';
-import 'package:scannerqrcode_premium/src/modules/home/controller/home_controller.dart';
-import 'package:scannerqrcode_premium/src/modules/readqrcode/view/read_qr_code_menu/read_qr_code_view.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scannerqrcode_premium/src/modules/settings/view/settings_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../createqrcode/view/create_qr_code_menu/create_qrcode_menu_view.dart';
+import '../../readqrcode/view/read_qr_code_menu/read_qr_code_view.dart';
+import '../../settings/view/settings_page.dart';
+import '../controller/home_controller.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -24,59 +24,65 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 35.h),
+        flexibleSpace: Padding(
+          padding: EdgeInsets.only(top: _size.height * 0.044),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(
-                tooltip: AppLocalizations.of(context)!.homeToolTipView1,
-                onPressed: () => _pageController.animateToPage(0,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    curve: Curves.decelerate),
-                icon: ValueListenableBuilder(
-                  valueListenable: HomeController.qrcodeButton,
-                  builder: (BuildContext context, value, Widget? child) => Icon(
-                      Icons.qr_code,
-                      color: HomeController.qrcodeButton.value),
+              Flexible(
+                flex: 6,
+                child: IconButton(
+                  tooltip: AppLocalizations.of(context)!.homeToolTipView1,
+                  onPressed: () => _pageController.animateToPage(0,
+                      duration: const Duration(
+                        milliseconds: 500,
+                      ),
+                      curve: Curves.decelerate),
+                  icon: ValueListenableBuilder(
+                    valueListenable: HomeController.qrcodeButton,
+                    builder: (BuildContext context, value, Widget? child) =>
+                        Icon(Icons.qr_code,
+                            color: HomeController.qrcodeButton.value),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: 20.w,
-              ),
-              IconButton(
-                tooltip: AppLocalizations.of(context)!.homeToolTipView2,
-                onPressed: () => _pageController.animateToPage(1,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    curve: Curves.decelerate),
-                icon: ValueListenableBuilder(
-                  valueListenable: HomeController.createButton,
-                  builder: (BuildContext context, value, Widget? child) => Icon(
-                      Icons.border_color,
-                      color: HomeController.createButton.value),
+              const Spacer(),
+              Flexible(
+                flex: 6,
+                child: IconButton(
+                  tooltip: AppLocalizations.of(context)!.homeToolTipView2,
+                  onPressed: () => _pageController.animateToPage(1,
+                      duration: const Duration(
+                        milliseconds: 500,
+                      ),
+                      curve: Curves.decelerate),
+                  icon: ValueListenableBuilder(
+                    valueListenable: HomeController.createButton,
+                    builder: (BuildContext context, value, Widget? child) =>
+                        Icon(Icons.border_color,
+                            color: HomeController.createButton.value),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: 20.w,
-              ),
-              IconButton(
-                tooltip: AppLocalizations.of(context)!.homeToolTipView3,
-                onPressed: () => _pageController.animateToPage(2,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    curve: Curves.decelerate),
-                icon: ValueListenableBuilder(
-                  valueListenable: HomeController.settingsButton,
-                  builder: (BuildContext context, value, Widget? child) => Icon(
-                      Icons.settings,
-                      color: HomeController.settingsButton.value),
+              const Spacer(),
+              Flexible(
+                flex: 6,
+                child: IconButton(
+                  tooltip: AppLocalizations.of(context)!.homeToolTipView3,
+                  onPressed: () => _pageController.animateToPage(2,
+                      duration: const Duration(
+                        milliseconds: 500,
+                      ),
+                      curve: Curves.decelerate),
+                  icon: ValueListenableBuilder(
+                    valueListenable: HomeController.settingsButton,
+                    builder: (BuildContext context, value, Widget? child) =>
+                        Icon(Icons.settings,
+                            color: HomeController.settingsButton.value),
+                  ),
                 ),
               )
             ],
@@ -85,8 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: PageView(
         controller: _pageController,
-        onPageChanged: (valueControllerPage) =>
-            HomeController.appBarControlleIconsColors(valueControllerPage),
+        onPageChanged: HomeController.appBarControlleIconsColors,
         children: const [
           ReadQRCodePage(),
           CreateQRCodeMenu(),

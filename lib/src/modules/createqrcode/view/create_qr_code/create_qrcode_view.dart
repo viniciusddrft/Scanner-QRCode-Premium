@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_contact/body_form_contact.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_facebook/body_form_facebook.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_github/body_form_github.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_instagram/body_form_instagram.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_link/body_form_link.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_reddit/body_form_reddit.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_text/body_form_text.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_tiktok/body_form_tiktok.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_twitch/body_form_twitch.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_twitter/body_form_twitter.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_whatsapp/body_form_whatsapp.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_wifi/body_form_wifi.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/view/create_qr_code/components/body_form_youtube/body_form_youtube.dart';
+
+import 'components/body_form_contact/body_form_contact.dart';
+import 'components/body_form_facebook/body_form_facebook.dart';
+import 'components/body_form_github/body_form_github.dart';
+import 'components/body_form_instagram/body_form_instagram.dart';
+import 'components/body_form_link/body_form_link.dart';
+import 'components/body_form_reddit/body_form_reddit.dart';
+import 'components/body_form_text/body_form_text.dart';
+import 'components/body_form_tiktok/body_form_tiktok.dart';
+import 'components/body_form_twitch/body_form_twitch.dart';
+import 'components/body_form_twitter/body_form_twitter.dart';
+import 'components/body_form_whatsapp/body_form_whatsapp.dart';
+import 'components/body_form_wifi/body_form_wifi.dart';
+import 'components/body_form_youtube/body_form_youtube.dart';
 
 class CreateQRCodeView extends StatefulWidget {
   final String typeQRCode;
@@ -28,8 +29,8 @@ class _CreateQRCodeViewState extends State<CreateQRCodeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: FutureBuilder(
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        title: Builder(
+          builder: (BuildContext context) {
             if (widget.typeQRCode == 'text') {
               return Text(AppLocalizations.of(context)!.createQRCodeTitleText);
             } else if (widget.typeQRCode == 'wifi') {
@@ -72,8 +73,8 @@ class _CreateQRCodeViewState extends State<CreateQRCodeView> {
           },
         ),
       ),
-      body: FutureBuilder(
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      body: Builder(
+        builder: (BuildContext context) {
           if (widget.typeQRCode == 'text') {
             return const BodyFormText();
           } else if (widget.typeQRCode == 'wifi') {

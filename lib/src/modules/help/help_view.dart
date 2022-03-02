@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scannerqrcode_premium/src/modules/help/components/button_help_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'components/button_help_widget.dart';
 
 class HelpView extends StatelessWidget {
   const HelpView({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class HelpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.settingsFrequentProblems),
+        title: const Text('Ajuda'),
       ),
       body: SingleChildScrollView(
         child: Column(

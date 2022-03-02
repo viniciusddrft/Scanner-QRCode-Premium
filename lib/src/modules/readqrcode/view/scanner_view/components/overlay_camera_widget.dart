@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:scannerqrcode_premium/src/modules/readqrcode/view/scanner_view/components/components/center_of_screen_widget.dart';
-import 'package:scannerqrcode_premium/src/modules/readqrcode/view/scanner_view/components/components/side_bar_overlay_widget.dart';
-import 'package:scannerqrcode_premium/src/modules/readqrcode/view/scanner_view/components/components/top_and_botton_bar_overlay_widget.dart';
+
+import 'components/center_of_screen_widget.dart';
+import 'components/side_bar_overlay_widget.dart';
+import 'components/top_and_botton_bar_overlay_widget.dart';
 
 class OverlayCameraWidget extends StatelessWidget {
   const OverlayCameraWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      height: _size.height,
+      width: _size.width,
       child: Row(
         children: [
           const SideBar(),
           SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width / 1.6669,
+            height: _size.height,
+            width: _size.width * 0.6,
             child: Column(
               children: const [
                 TopAndBottonBar(),

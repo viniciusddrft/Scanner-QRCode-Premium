@@ -1,12 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scannerqrcode_premium/src/modules/createqrcode/controller/create_qr_code/create_qr_code_controller.dart';
-import 'package:scannerqrcode_premium/src/modules/settings/controller/settings_create_qrcode.dart';
-import 'package:scannerqrcode_premium/src/shared/themes/text_themes.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../settings/controller/settings_create_qrcode.dart';
+import '../../controller/create_qr_code/create_qr_code_controller.dart';
 
 class CreateQRCodeResult extends StatefulWidget {
   final String dataQRCode;
@@ -46,24 +45,28 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title:
             Text(AppLocalizations.of(context)!.createResultQRCodeAppBarTitle),
       ),
       body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: _size.height,
+        width: _size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Screenshot(
               controller: _screenshotController,
               child: QrImage(
-                padding: EdgeInsets.all(10.sp),
+                padding: EdgeInsets.all(
+                  _size.height * 0.02,
+                ),
                 version: QrVersions.auto,
                 data: widget.dataQRCode,
-                size: 220.sp,
+                size: _size.height * 0.25,
                 backgroundColor: SettingsCreateQRCode.colorQRBackground.value,
                 eyeStyle: QrEyeStyle(
                     color: SettingsCreateQRCode.colorQRCodeEye.value,
@@ -79,7 +82,11 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 50.h),
+              padding: EdgeInsets.only(
+                left: _size.width * 0.09,
+                right: _size.width * 0.09,
+                top: _size.height * 0.07,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -98,19 +105,19 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          height: 40.h,
-                          width: 95.w,
+                          height: _size.height * 0.045,
+                          width: _size.width * 0.25,
                           child: Center(
                             child: Text(
                               AppLocalizations.of(context)!
                                   .createResultQrCodeButtonSave,
-                              style: AppTextThemes.createQrcodeButtons,
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.save,
-                          size: 24.sp,
+                          size: 24,
                         )
                       ],
                     ),
@@ -127,19 +134,19 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          height: 40.h,
-                          width: 95.w,
+                          height: _size.height * 0.045,
+                          width: _size.width * 0.25,
                           child: Center(
                             child: Text(
                               AppLocalizations.of(context)!
                                   .createResultQrCodeButtonShare,
-                              style: AppTextThemes.createQrcodeButtons,
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.share,
-                          size: 24.sp,
+                          size: 24,
                         )
                       ],
                     ),
