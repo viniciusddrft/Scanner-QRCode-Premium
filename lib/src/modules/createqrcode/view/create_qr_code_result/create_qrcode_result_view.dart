@@ -5,7 +5,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../settings/controller/settings_create_qrcode.dart';
-import '../../controller/create_qr_code/create_qr_code_controller.dart';
+import '../../controller/create_qr_code_controller.dart';
 
 class CreateQRCodeResult extends StatefulWidget {
   final String dataQRCode;
@@ -18,29 +18,16 @@ class CreateQRCodeResult extends StatefulWidget {
 }
 
 class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
-  final ScreenshotController _screenshotController = ScreenshotController();
+  final ScreenshotController screenshotController = ScreenshotController();
+  late final CreateQrCodeController _createQrCodeController;
 
-  void _popupQRCodeSave() {
-    Future.delayed(
-        const Duration(milliseconds: 500), () => Navigator.pop(context));
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title:
-            Text(AppLocalizations.of(context)!.createResultQrPopupSave + ' !'),
-      ),
+  @override
+  void initState() {
+    _createQrCodeController = CreateQrCodeController(
+      context,
+      screenshotController: screenshotController,
     );
-  }
-
-  void _popupError() {
-    Future.delayed(const Duration(seconds: 1), () => Navigator.pop(context));
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: Text(
-            AppLocalizations.of(context)!.createResultQrPopupError + ' :/'),
-      ),
-    );
+    super.initState();
   }
 
   @override
@@ -59,10 +46,10 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Screenshot(
-              controller: _screenshotController,
+              controller: screenshotController,
               child: QrImage(
                 padding: EdgeInsets.all(
-                  _size.height * 0.02,
+                  _size.height * 0.013,
                 ),
                 version: QrVersions.auto,
                 data: widget.dataQRCode,
@@ -96,11 +83,7 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                     ),
-                    onPressed: () => CreateQrCodeController.isTheImageQRSaved(
-                            _screenshotController)
-                        .then(
-                      (value) => value ? _popupQRCodeSave() : _popupError(),
-                    ),
+                    onPressed: _createQrCodeController.saveImageQR,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -128,8 +111,7 @@ class _CreateQRCodeResultState extends State<CreateQRCodeResult> {
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                     ),
-                    onPressed: () => CreateQrCodeController.shareImageQr(
-                        _screenshotController),
+                    onPressed: _createQrCodeController.shareImageQr,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

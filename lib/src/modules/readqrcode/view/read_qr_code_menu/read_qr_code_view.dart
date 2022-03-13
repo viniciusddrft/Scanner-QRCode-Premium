@@ -11,14 +11,12 @@ class ReadQRCodePage extends StatefulWidget {
 }
 
 class _ReadQRCodePageState extends State<ReadQRCodePage> {
-  void popupError() {
-    Future.delayed(const Duration(seconds: 1), () => Navigator.pop(context));
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) => const AlertDialog(
-        title: Text('Error  :/'),
-      ),
-    );
+  late final ReadQrCodeController _readQrCodeController;
+
+  @override
+  void initState() {
+    _readQrCodeController = ReadQrCodeController(context);
+    super.initState();
   }
 
   @override
@@ -39,7 +37,7 @@ class _ReadQRCodePageState extends State<ReadQRCodePage> {
         Flexible(
           flex: 5,
           child: Text(
-            'Scanner QRCode',
+            'Scanner QRCode Premium',
             style: GoogleFonts.roboto(
               color: Colors.red,
               textStyle: Theme.of(context).textTheme.displayLarge,
@@ -57,7 +55,7 @@ class _ReadQRCodePageState extends State<ReadQRCodePage> {
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
-                onPressed: () async => ReadQrCodeController.scanCamera(context),
+                onPressed: _readQrCodeController.scanCamera,
                 child: SizedBox(
                   height: _size.height * 0.045,
                   width: _size.width * 0.35,
@@ -83,8 +81,7 @@ class _ReadQRCodePageState extends State<ReadQRCodePage> {
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
-                onPressed: () =>
-                    ReadQrCodeController.scanFile(context, popupError),
+                onPressed: _readQrCodeController.scanFile,
                 child: SizedBox(
                   height: _size.height * 0.045,
                   width: _size.width * 0.35,

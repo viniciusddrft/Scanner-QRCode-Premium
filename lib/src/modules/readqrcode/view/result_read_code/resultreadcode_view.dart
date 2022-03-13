@@ -4,6 +4,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 
+import '../../../../shared/popup_notices/popup_notices.dart';
 import 'components/button_url.dart';
 
 class ResultReadCode extends StatefulWidget {
@@ -15,7 +16,7 @@ class ResultReadCode extends StatefulWidget {
   _ResultReadCodeState createState() => _ResultReadCodeState();
 }
 
-class _ResultReadCodeState extends State<ResultReadCode> {
+class _ResultReadCodeState extends State<ResultReadCode> with PopupNotices {
   late final Widget _button;
 
   @override
@@ -26,17 +27,6 @@ class _ResultReadCodeState extends State<ResultReadCode> {
       _button = Container();
     }
     super.initState();
-  }
-
-  void _popupCopyBoard() {
-    Future.delayed(
-        const Duration(milliseconds: 500), () => Navigator.pop(context));
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: Text(AppLocalizations.of(context)!.scanResultPopupCopy + '.'),
-      ),
-    );
   }
 
   Widget returnButton() => _button;
@@ -95,7 +85,7 @@ class _ResultReadCodeState extends State<ResultReadCode> {
                           AppLocalizations.of(context)!.scanResultQrToolTip,
                       onPressed: () =>
                           FlutterClipboard.copy(widget.result).then(
-                        (_) => _popupCopyBoard(),
+                        (_) => popupCopyBoard(context),
                       ),
                       icon: Icon(Icons.copy,
                           color: Theme.of(context).iconTheme.color),

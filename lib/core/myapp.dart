@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
                 fontWeight: FontWeight.w500, fontSize: 14, color: Colors.white),
           ),
         ),
-        initialRoute: '/Home',
+        initialRoute: '/PageView',
         onGenerateRoute: Routes.routes,
       ),
     );
