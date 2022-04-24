@@ -37,8 +37,8 @@ class _MyPageViewState extends State<MyPageView> {
                 child: IconButton(
                   tooltip: AppLocalizations.of(context)!.homeToolTipView1,
                   onPressed: () => _pageController.animateToPage(0,
-                      duration: const Duration(
-                        milliseconds: 500,
+                      duration: Duration(
+                        milliseconds: _pageController.page == 2 ? 750 : 500,
                       ),
                       curve: Curves.decelerate),
                   icon: ValueListenableBuilder(
@@ -73,8 +73,8 @@ class _MyPageViewState extends State<MyPageView> {
                 child: IconButton(
                   tooltip: AppLocalizations.of(context)!.homeToolTipView3,
                   onPressed: () => _pageController.animateToPage(2,
-                      duration: const Duration(
-                        milliseconds: 500,
+                      duration: Duration(
+                        milliseconds: _pageController.page == 0 ? 750 : 500,
                       ),
                       curve: Curves.decelerate),
                   icon: ValueListenableBuilder(

@@ -19,7 +19,7 @@ class ButtonRateApp extends StatelessWidget with OpenLink {
           primary: Theme.of(context).backgroundColor,
         ),
         onPressed: () => openLink(
-            'https://play.google.com/store/apps/details?id=com.scannerqrcode_premium'),
+            'https://play.google.com/store/apps/details?id=com.scannerqrcode'),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: _size.width * 0.07),
           child: Row(
