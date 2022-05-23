@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'components/button_contact.dart';
 import 'components/button_custom_qrcode.dart';
 import 'components/button_help.dart';
-import 'components/button_premium.dart';
 import 'components/button_rate_app.dart';
 import 'components/button_switch_language.dart';
 import 'components/button_switch_theme.dart';
@@ -19,7 +18,6 @@ class SettingsPage extends StatelessWidget {
 
     return Column(
       children: [
-        const ButtonPremium(),
         const ButtonCustomQRCode(),
         const ButtonSwicthTheme(),
         const ButtonSwitchLanguage(),
@@ -31,7 +29,7 @@ class SettingsPage extends StatelessWidget {
           padding: EdgeInsets.only(
               bottom: size.height * 0.04, top: size.height * 0.04),
           child: Text(
-            '${AppLocalizations.of(context)!.settingsVersion} 2.5.0',
+            '${AppLocalizations.of(context)!.settingsVersion} 2.5.1',
             style: GoogleFonts.yatraOne(color: Colors.grey),
           ),
         ),
